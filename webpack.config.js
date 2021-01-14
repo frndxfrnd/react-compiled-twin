@@ -64,10 +64,7 @@ module.exports = [
           new TerserPlugin()
         ],
         moduleIds: 'deterministic',
-        runtimeChunk: true,
-        splitChunks: {
-          chunks: 'all'
-        }
+        splitChunks: {}
       }
     }
   }
