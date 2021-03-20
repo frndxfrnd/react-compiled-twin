@@ -1,3 +1,6 @@
+const dev = process.env.NODE_ENV === 'development'
+const hot = process.env.HOT !== undefined
+
 module.exports = {
   presets: [
     '@babel/env',
@@ -8,6 +11,7 @@ module.exports = {
   ],
   plugins: [
     '@emotion',
-    'xwind/babel'
-  ]
+    'xwind/babel',
+    dev && hot && 'react-refresh/babel'
+  ].filter(x => x)
 }

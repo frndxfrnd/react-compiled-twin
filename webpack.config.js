@@ -4,10 +4,20 @@ const TerserPlugin = require('terser-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = [
-  async (env, argv) => {
-    const dev = env.development || env.dev
+  async (_env, argv) => {
+    if (argv.mode) {
+      process.env.NODE_ENV = argv.mode
+    }
+
+    if (argv.hot) {
+      process.env.HOT = argv.hot
+    }
+
+    const dev = process.env.NODE_ENV === 'development'
+    const hot = process.env.HOT !== undefined
 
     return {
       context: __dirname,
@@ -21,10 +31,8 @@ module.exports = [
         publicPath: '/'
       },
       target: 'web',
-      mode: dev ? 'development' : 'production',
       devtool: dev ? 'eval-source-map' : 'source-map',
       devServer: {
-        hot: true,
         contentBase: path.resolve(__dirname, 'dist'),
         historyApiFallback: {
           index: 'index.html'
@@ -34,18 +42,23 @@ module.exports = [
         new CleanWebpackPlugin(),
         new ProgressBarPlugin(),
         new HtmlWebpackPlugin({
-          title: 'iiwii',
-          inject: true,
-          template: require('html-webpack-template'),
-          appMountId: 'root'
-        })
-      ],
+          template: 'src/template.ejs',
+          minify: {
+            ignoreCustomComments: [
+              /^made with ❤️$/
+            ]
+          }
+        }),
+        dev && hot && new ReactRefreshWebpackPlugin()
+      ].filter(x => x),
       module: {
         rules: [
           {
-            test: /\.jsx?$/,
+            test: /\.[jt]sx?$/,
             exclude: /(node_modules)/,
-            loader: 'babel-loader'
+            use: [
+              'babel-loader'
+            ]
           }
         ]
       },
@@ -55,8 +68,7 @@ module.exports = [
           '@': [
             path.resolve(__dirname, 'src'),
             path.resolve(__dirname, 'src/components')
-          ],
-          'react-dom': '@hot-loader/react-dom'
+          ]
         }
       },
       optimization: {
@@ -64,7 +76,9 @@ module.exports = [
           new TerserPlugin()
         ],
         moduleIds: 'deterministic',
-        splitChunks: {}
+        splitChunks: {
+          chunks: 'all'
+        }
       }
     }
   }

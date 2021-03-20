@@ -1,19 +1,40 @@
-import { hot } from 'react-hot-loader/root'
-
-import ReactDOM from 'react-dom'
-
+import { render } from 'react-dom'
 import { Global } from '@emotion/react'
 import xw from 'xwind'
 
-const App = hot(() => {
-  return (
-    <>
-      <Global styles={xw`XWIND_BASE XWIND_GLOBAL`} />
-      <div css={xw`relative w-screen h-screen`}>
-        <span css={xw`absolute bottom-1/2 w-full text-center transform translate-y-1/2`}>work in progress</span>
-      </div>
-    </>
-  )
-})
+import { useTranslation } from 'react-i18next'
+import { Suspense, useEffect } from 'react'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const boot = require.context('@/boot')
+for (const key of boot.keys()) {
+  boot(key)
+}
+
+const Main = () => {
+  const { t, i18n } = useTranslation()
+
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', i18n.language)
+  }, [i18n.language])
+
+  return (
+    <main css={xw`absolute inset-0 flex flex-col justify-center items-center`}>
+      <h1>{t('construction')}</h1>
+      <a css={xw`underline`} href="https://www.github.com/iiwii">github.com/iiwii</a>
+    </main>
+  )
+}
+
+render(
+  <>
+    <Global styles={xw`XWIND_BASE XWIND_GLOBAL`} />
+    <Suspense fallback={
+      <main css={xw`absolute inset-0 flex flex-col justify-center items-center`}>
+        <span>🚧</span>
+      </main>
+    }>
+      <Main />
+    </Suspense>
+  </>,
+  document.getElementById('root')
+)
