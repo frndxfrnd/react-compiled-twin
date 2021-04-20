@@ -5,13 +5,13 @@ module.exports = {
   presets: [
     '@babel/env',
     ['@babel/react', {
-      runtime: 'automatic',
-      importSource: '@emotion/react'
+      runtime: 'automatic'
     }]
   ],
   plugins: [
-    '@emotion',
-    'xwind/babel',
+    'babel-plugin-twin',
+    'babel-plugin-macros',
+    '@compiled/babel-plugin',
     dev && hot && 'react-refresh/babel'
   ].filter(x => x)
 }
