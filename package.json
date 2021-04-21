@@ -50,7 +50,7 @@
   "scripts": {
     "test": "eslint .",
     "dev": "webpack serve --mode development --hot",
-    "build": "webpack --mode production",
+    "build": "eslint . && webpack --mode production",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
