@@ -31,6 +31,6 @@ jobs:
           name: dist
       - name: gh-pages
         run: |
-          npm deploy
+          npm run deploy
 
   
