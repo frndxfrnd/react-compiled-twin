@@ -1,5 +1,7 @@
 const path = require('path')
 
+const webpack = require('webpack')
+
 const TerserPlugin = require('terser-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin
@@ -49,6 +51,7 @@ module.exports = [
             ]
           }
         }),
+        dev && hot && new webpack.HotModuleReplacementPlugin(),
         dev && hot && new ReactRefreshWebpackPlugin()
       ].filter(x => x),
       module: {

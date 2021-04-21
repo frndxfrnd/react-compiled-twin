@@ -1,7 +1,6 @@
 import { render } from 'react-dom'
 
-import 'tailwindcss/tailwind.css'
-import tw from 'twin.macro'
+import '@compiled/react'
 
 import { useTranslation } from 'react-i18next'
 import { Suspense, useEffect } from 'react'
@@ -19,7 +18,7 @@ const Main = () => {
   }, [i18n.language])
 
   return (
-    <main css={tw`absolute inset-0 flex flex-col justify-center items-center`}>
+    <main tw="absolute inset-0 flex flex-col justify-center items-center">
       <h1>{t('construction')}</h1>
       <a tw="underline" href="https://www.github.com/iiwii">github.com/iiwii</a>
     </main>
