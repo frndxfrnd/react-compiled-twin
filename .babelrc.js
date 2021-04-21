@@ -9,7 +9,6 @@ module.exports = {
     }]
   ],
   plugins: [
-    'babel-plugin-twin',
     'babel-plugin-macros',
     '@compiled/babel-plugin',
     dev && hot && 'react-refresh/babel'

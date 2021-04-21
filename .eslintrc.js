@@ -1,9 +1,9 @@
 module.exports = {
-  root: true,
+  parser: 'babel-eslint',
   extends: [
     'standard',
-    'eslint:recommended',
-    'plugin:react/recommended'
+    'standard-jsx',
+    'standard-react'
   ],
   rules: {
     'react/jsx-uses-react': 'off',

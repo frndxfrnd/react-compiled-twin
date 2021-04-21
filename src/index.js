@@ -18,24 +18,22 @@ const Main = () => {
   }, [i18n.language])
 
   return (
-    <main tw="absolute inset-0 flex flex-col justify-center items-center">
+    <main tw='absolute inset-0 flex flex-col justify-center items-center'>
       <h1>{t('construction')}</h1>
-      <a tw="underline" href="https://www.github.com/iiwii">github.com/iiwii</a>
+      <a tw='underline' href='https://www.github.com/iiwii'>github.com/iiwii</a>
     </main>
   )
 }
 
 const Fallback = () => (
-  <main tw="absolute inset-0 flex flex-col justify-center items-center">
+  <main tw='absolute inset-0 flex flex-col justify-center items-center'>
     <span>🚧</span>
   </main>
 )
 
 render(
-  <>
-    <Suspense fallback={<Fallback />}>
-      <Main />
-    </Suspense>
-  </>,
+  <Suspense fallback={<Fallback />}>
+    <Main />
+  </Suspense>,
   document.getElementById('root')
 )
