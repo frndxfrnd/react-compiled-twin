@@ -12,11 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: |
           npm install
           npm run build
-      - uses: actions/upload-artifact@v2.2.3
+      - name: upload
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: dist
           path: dist/
@@ -24,11 +27,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2.0.9
+      - name: download
+        uses: actions/download-artifact@v2.0.9
         with:
           name: dist
-      - run: |
-          npm run deploy
+      - name: publish
+        run: |
+          npm install -g gh-pages
+          gh-pages -d dist/
 
   
