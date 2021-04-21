@@ -9,8 +9,9 @@ module.exports = {
     }]
   ],
   plugins: [
-    'babel-plugin-macros',
-    '@compiled/babel-plugin',
+    'twin',
+    'macros',
+    '@compiled',
     dev && hot && 'react-refresh/babel'
   ].filter(x => x)
 }
