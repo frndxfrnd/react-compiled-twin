@@ -32,8 +32,7 @@ jobs:
         with:
           name: dist
       - name: publish
-        run: |
-          npm install -g gh-pages
-          gh-pages -d dist/
-
+        uses: Cecilapp/GitHub-Pages-deploy@3.1.0
+        with:
+          build_dir: dist/
   
