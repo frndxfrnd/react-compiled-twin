@@ -10,7 +10,7 @@ export default () => {
       resources: {
         en: {
           translation: {
-            construction: '🚧under construction🚧'
+            'hello world': 'Hello World!'
           }
         }
       },
