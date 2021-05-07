@@ -1,7 +1,7 @@
 {
-  "name": "iiwii.github.io",
+  "name": "react-compiled-twin",
   "version": "1.0.0",
-  "description": "This is iiwii's personal GitHub page source.",
+  "description": "Webapp template using react + compiled + twin.macro",
   "browser": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.13.17",
@@ -58,18 +58,14 @@
   "scripts": {
     "test": "eslint .",
     "dev": "webpack serve --mode development --hot",
-    "build": "eslint . && webpack --mode production",
-    "deploy": "gh-pages -d dist"
+    "build": "eslint . && webpack --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iiwii/iiwii.github.io.git"
+    "url": "git+https://github.com/frndxfrnd/react-compiled-twin.git"
   },
   "author": "iiwii",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iiwii/iiwii.github.io/issues"
-  },
   "homepage": "https://iiwii.github.io",
   "sideEffects": false
 }
