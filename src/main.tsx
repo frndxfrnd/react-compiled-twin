@@ -13,8 +13,7 @@ export default () => {
 
   return (
     <main tw="absolute inset-0 flex flex-col justify-center items-center">
-      <h1>{t('construction')}</h1>
-      <a tw='underline' href='https://www.github.com/iiwii'>github.com/iiwii</a>
+      <h1>{t('hello world')}</h1>
     </main>
   )
 }
