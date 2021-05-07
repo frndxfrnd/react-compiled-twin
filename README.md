@@ -1,6 +1,6 @@
 # Hi
 
-This is a template using React + Compiled + Twin.Macro, with typescript support. The source is transpiled via Babel and then bundled together with Webpack.
+This is a template using [React](https://github.com/facebook/react) + [Compiled](https://github.com/atlassian-labs/compiled) + [Twin.Macro](https://github.com/ben-rogerson/twin.macro), with typescript support. The source is transpiled via [Babel](https://github.com/babel/babel) and then bundled together with [Webpack](https://github.com/webpack/webpack).
 
 ## Getting Started
 
