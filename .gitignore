@@ -1,3 +1,7 @@
+# Editors
+.vscode
+
+# Webpack
 stats.json
 
 # Logs
