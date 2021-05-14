@@ -25,7 +25,7 @@ module.exports = [
     return {
       context: __dirname,
       entry: [
-        './src/index.tsx'
+        './src/index'
       ],
       output: {
         filename: '[name].[contenthash].js',

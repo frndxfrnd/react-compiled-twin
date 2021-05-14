@@ -7,8 +7,7 @@ module.exports = {
       targets: '> 0.25%, not dead',
       bugfixes: true,
       useBuiltIns: 'usage',
-      corejs: 3,
-      debug: !hot
+      corejs: 3
     }],
     ['@babel/react', {
       runtime: 'automatic'
