@@ -5,7 +5,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*", "src/components/*"]
     },
     "jsx":"preserve",
     "esModuleInterop": true,
