@@ -15,6 +15,15 @@ module.exports = {
     '@babel/typescript'
   ],
   plugins: [
+    ["module-resolver", {
+      "root": ["./src"],
+      "extensions": [
+        '.js', '.ts', '.jsx', '.tsx', '.json'
+      ],
+      "alias": {
+        "@": ["./src", './src/components'],
+      }
+    }],
     'macros',
     '@compiled',
     hot && 'react-refresh/babel'
